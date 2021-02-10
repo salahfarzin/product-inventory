@@ -16,8 +16,12 @@ import {UserUploadDto} from "../core/repositories/dtos/user-upload";
 import {UserUploadTransformer} from "../core/repositories/transfomers/user-upload";
 import {UserTransfomer} from "../core/repositories/transfomers/user";
 import {ProductInventoryTransformer} from "../core/repositories/transfomers/product-inventory";
+import {HttpClient} from "../utils/http-client";
 
 const container = new Container();
+
+// HttpClient
+container.bind<HttpClient>(TYPES.HttpClient).to(HttpClient);
 
 // User
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepositoryImpl);

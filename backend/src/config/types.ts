@@ -1,6 +1,6 @@
 export const TYPES = {
     // Database
-    DbClient: Symbol.for("Transformer"),
+    HttpClient: Symbol.for("HttpClient"),
 
     // Transformer
     Transformer: Symbol.for("Transformer"),

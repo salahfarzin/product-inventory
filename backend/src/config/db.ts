@@ -1,7 +1,7 @@
 import {Product, ProductImage, ProductInventory, User} from "../core/entities";
 import {UserUpload} from "../core/entities/user-upload";
 
-export const dbConfig:any = {
+export const dbConfig: any = {
     "name": "default",
     "type": "mysql",
     "port": 3306,

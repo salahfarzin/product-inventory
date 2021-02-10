@@ -5,6 +5,8 @@ import {TYPES} from "../../config/types";
 import {UserRepository} from "../repositories/user";
 import {inject} from "inversify";
 import {User} from "../entities";
+import {HttpClient} from "../../utils/http-client";
+import product from "./product";
 
 export interface AuthResponse {
     token: string;
@@ -13,13 +15,14 @@ export interface AuthResponse {
 
 @controller('/api/v1/auth')
 export default class Auth implements interfaces.Controller {
-    constructor(@inject(TYPES.UserRepository) private readonly userRepository: UserRepository) {
+    constructor(@inject(TYPES.UserRepository) private readonly userRepository: UserRepository,
+                @inject(TYPES.HttpClient) private readonly httpClient: HttpClient) {
     }
 
     @httpGet('/')
     public async request(@request() req: express.Request, @response() res: express.Response) {
         return res.status(200).json({
-            redirectTo: "https://github.com/login/oauth/authorize?client_id=" + process.env.GITHUB_CLIENT_ID
+            redirectTo: process.env.GITHUB_URL + "/authorize?client_id=" + process.env.GITHUB_CLIENT_ID
         });
     }
 
@@ -36,8 +39,8 @@ export default class Auth implements interfaces.Controller {
 
         // request github access token
         let accessToken: string = '';
-        await axios.post(`https://github.com/login/oauth/access_token`, body, opts)
-            .then(_res => {
+        await this.httpClient.post(process.env.GITHUB_URL + '/access_token', body, opts)
+            .then((_res: any) => {
                 accessToken = _res.data.access_token;
             })
             .catch(err => {
