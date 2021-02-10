@@ -1,15 +1,2 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 .idea
-backend/node_modules
-backend/dist/index.js
-backend/.env
-backend/package-lock.json
-
-# FrontEnd
-frontend/node_modules
-frontend/package-lock.json
-frontend/yarn.lock
-frontend/yarn.error.log
-
-src/**/*.js
-src/**/*.map
-coverage
