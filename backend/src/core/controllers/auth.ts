@@ -4,7 +4,7 @@ import axios from "axios";
 import {TYPES} from "../../config/types";
 import {UserRepository} from "../repositories/user";
 import {inject} from "inversify";
-import {User} from "../../../../frontend/src/interfaces/user";
+import {User} from "../entities";
 
 export interface AuthResponse {
     token: string;
