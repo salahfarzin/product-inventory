@@ -2,7 +2,11 @@
 
 #### Backend
 
+docker-compose up
+
 ``cd backend  ``
+
+``yarn install  ``
 
 ``yarn start  ``
 
@@ -10,7 +14,10 @@
 
 
 ### Frontend
+
 ``cd backend  ``
+
+``yarn install  ``
 
 ``yarn start  ``
 
