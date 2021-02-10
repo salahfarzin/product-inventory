@@ -11,7 +11,8 @@ export const mockDbConnection = () => {
         await connection.close();
     });
 
-    it('connect to database ' + dbConfig.database + ' successfully', async () => {
+    it('connect to database ' + dbConfig.database + ' successfully', async done => {
         expect(true).toBe(true);
+        done();
     });
 }

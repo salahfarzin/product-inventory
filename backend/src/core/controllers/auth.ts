@@ -75,16 +75,4 @@ export default class Auth implements interfaces.Controller {
 
         return res.json(data);
     }
-
-    @httpGet('/check')
-    public async check(@request() req: express.Request, @response() res: express.Response) {
-        const token: string = req.headers.authorization ? req.headers.authorization : '';
-
-        const user = this.userRepository.getByToken(token);
-        return res.json({
-            data: {
-                user: user
-            }
-        });
-    }
 }

@@ -1,7 +1,6 @@
 import {injectable} from "inversify";
 import axios, {AxiosResponse} from "axios";
 
-
 axios.interceptors.request.use((config) => {
     /**
      * add come config globally
