@@ -1,13 +1,14 @@
 version: '3.3'
 
 services:
-  mysql:
-    image: mysql:latest
-    container_name: mysql
+  db:
+    image: mysql:8
     restart: always
-    tty: true
     command: --default-authentication-plugin=mysql_native_password
-    ports:
-      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: 42s8DkMVn.LskdEm2t(d
+      MYSQL_DATABASE: product_db
+      MYSQL_USER: product_user
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
