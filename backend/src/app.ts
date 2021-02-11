@@ -52,7 +52,7 @@ export default class App {
          * Server Activation
          */
         const app = ser.listen(PORT, () => {
-            if (process.env.NODE_ENV == 'dev') {
+            if (process.env.NODE_ENV == 'development') {
                 console.log(`Listening on port ${PORT}`);
             }
         });

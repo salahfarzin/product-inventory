@@ -4,6 +4,7 @@ import {getRepository} from "typeorm";
 import {ProductDto} from "./dtos";
 import {TYPES} from "../../config/types";
 import {Transformer} from "./common/transformer";
+import {EventConfig, EventEmitterImpl} from "./common/event";
 
 
 export interface ProductRepository {
@@ -16,7 +17,8 @@ export interface ProductRepository {
 export class ProductRepositoryImpl implements ProductRepository {
     private productRepository = getRepository(Product);
 
-    constructor(@inject(TYPES.ProductTransfomer) private transfomer: Transformer<Product, ProductDto>) {
+    constructor(@inject(TYPES.ProductTransfomer) private transfomer: Transformer<Product, ProductDto>,
+                @inject(TYPES.EventEmitter) private event: EventEmitterImpl) {
     }
 
     getAll(): Promise<Product[]> {
@@ -24,6 +26,8 @@ export class ProductRepositoryImpl implements ProductRepository {
     }
 
     async insert(product: ProductDto) {
+        const endpoint: any = process.env.PD_ENDPOINT;
+
         return await this.productRepository.save(this.transfomer.fromDto(product))
             .catch((error) => {
                 if (error.code === 'ER_DUP_ENTRY') {
@@ -32,7 +36,15 @@ export class ProductRepositoryImpl implements ProductRepository {
                     // if product is duplicate the update that
                     this.productRepository.update({id: product.id}, this.transfomer.fromDto(product));
 
-                    //todo: send and event
+                    // emit an event
+                    const eventConfig: EventConfig = {
+                        url: endpoint,
+                        data: {
+                            message: "product id [" + product.id + "] was updated",
+                            product: product
+                        }
+                    }
+                    this.event.subscribe(eventConfig);
                 }
             });
     }

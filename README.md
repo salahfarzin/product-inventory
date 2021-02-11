@@ -1,24 +1,37 @@
 ### Product Inventory (NodeJs + ReactJs)
 
-#### Backend
+#### Backend (NodeJS + Inversify + Jest)
 
+```
 docker-compose up
 
-``cd backend  ``
+cd backend
 
-``yarn install  ``
+#install
+yarn install
 
-``yarn start  ``
+# run
+yarn start
 
-``yarn test  ``
+# test
+yarn test  
 
+```
 
 ### Frontend
 
-``cd frontend-reactjs  ``
 
-``yarn install  ``
+```
 
-``yarn start  ``
+cd frontend-reactjs
 
-``yarn test  ``
+#install
+yarn install
+
+# run
+yarn start
+
+# test
+yarn test  
+
+```

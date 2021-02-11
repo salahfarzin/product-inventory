@@ -6,7 +6,6 @@ dotenv.config();
 const endpoint: any = process.env.PD_ENDPOINT;
 
 describe('Test Pipdream endpoint with a test event', () => {
-
     it("SEND this is the product-inventory app", async done => {
         const result = await axios
             .post(endpoint, {

@@ -17,11 +17,15 @@ import {UserUploadTransformer} from "../core/repositories/transfomers/user-uploa
 import {UserTransfomer} from "../core/repositories/transfomers/user";
 import {ProductInventoryTransformer} from "../core/repositories/transfomers/product-inventory";
 import {HttpClient} from "../utils/http-client";
+import {EventEmitter, EventEmitterImpl} from "../core/repositories/common/event";
 
 const container = new Container();
 
 // HttpClient
 container.bind<HttpClient>(TYPES.HttpClient).to(HttpClient);
+
+// Event
+container.bind<EventEmitter>(TYPES.EventEmitter).to(EventEmitterImpl);
 
 // User
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepositoryImpl);

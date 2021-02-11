@@ -5,6 +5,9 @@ export const TYPES = {
     // Transformer
     Transformer: Symbol.for("Transformer"),
 
+    // Event
+    EventEmitter: Symbol.for("EventEmitter"),
+
     // User
     UserRepository: Symbol.for("UserRepository"),
     UserTransformer: Symbol.for("UserTransformer"),

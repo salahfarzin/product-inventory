@@ -12,11 +12,11 @@ axios.interceptors.request.use((config) => {
 export class HttpClient {
     private client = axios
 
-    async get<T>(url: any, config: {}): Promise<AxiosResponse<T>> {
-        return await this.client.get<T>(url, config)
+    get<T>(url: any, config: {}): Promise<AxiosResponse<T>> {
+        return this.client.get<T>(url, config)
     }
 
-    async post<T, R>(url: any, data: any, config: {}): Promise<AxiosResponse<T>> {
-        return await this.client.post<T>(url, data, config)
+    post<T, R>(url: any, data: any, config: {}): Promise<AxiosResponse<T>> {
+        return this.client.post<T>(url, data, config)
     }
 }
