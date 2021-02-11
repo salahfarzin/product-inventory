@@ -3,9 +3,9 @@
 #### Backend (NodeJS + Inversify + Jest)
 
 ```
-docker-compose up
-
 cd backend
+
+docker-compose up
 
 #install
 yarn install
