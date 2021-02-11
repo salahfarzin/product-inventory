@@ -108,7 +108,7 @@ export default class Product implements interfaces.Controller {
 
             fileListResponse[key] = userUpload;
 
-            this.userUploadRepository.insert(userUpload)
+            this.userUploadRepository.insert(userUpload);
         });
 
         return this.list(req, res);

@@ -18,8 +18,11 @@ import {UserTransfomer} from "../core/repositories/transfomers/user";
 import {ProductInventoryTransformer} from "../core/repositories/transfomers/product-inventory";
 import {HttpClient} from "../utils/http-client";
 import {EventEmitter, EventEmitterImpl} from "../core/repositories/common/event";
+import {interfaces} from "inversify-express-utils";
 
 const container = new Container();
+
+// HttpClient
 
 // HttpClient
 container.bind<HttpClient>(TYPES.HttpClient).to(HttpClient);

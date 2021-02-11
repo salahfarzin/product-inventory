@@ -12,26 +12,26 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../rootReducer";
 
 type Inputs = {
-    productFiles: any
+    productFiles: FileList
 };
 
-// const SUPPORTED_FORMATS = [
-//     "text/xml",
-//     "text/csv",
-//     "application/xml",
-//     "application/csv",
-// ];
+const SUPPORTED_FORMATS = [
+    "text/xml",
+    "text/csv",
+    "application/xml",
+    "application/csv",
+];
 
 // validate form
 const schema = yup.object().shape({
     productFiles: yup
         .mixed()
         .required("You have to provide a file")
-    /* .test(
-         "fileFormat",
-         "please select valid files with extension xml and csv",
-         value => value && SUPPORTED_FORMATS.includes(value.mimetype)
-     )*/
+        // .test(
+        //     "fileFormat",
+        //     "please select valid files with extension xml and csv",
+        //     values => values.map(file => file && SUPPORTED_FORMATS.includes(file.mimetype)),
+        // )
 });
 
 function Product() {

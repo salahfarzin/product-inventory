@@ -1,16 +1,14 @@
 import {controller, httpGet, interfaces, request, response} from "inversify-express-utils";
 import * as express from "express";
-import axios from "axios";
 import {TYPES} from "../../config/types";
 import {UserRepository} from "../repositories/user";
 import {inject} from "inversify";
-import {User} from "../entities";
 import {HttpClient} from "../../utils/http-client";
-import product from "./product";
+import {UserDto} from "../repositories/dtos";
 
 export interface AuthResponse {
-    token: string;
-    user: User;
+    token: string
+    user: UserDto | null | undefined
 }
 
 @controller('/api/v1/auth')
@@ -49,30 +47,33 @@ export default class Auth implements interfaces.Controller {
 
         // request github user detail
         const tokenType = 'Bearer';
-        const response = await axios({
-            url: `https://api.github.com/user`,
+        const response = await this.httpClient.get('https://api.github.com/user', {
             headers: {
                 Authorization: tokenType + ' ' + accessToken,
             },
         });
 
         // store user info to database
+        let userDto: UserDto;
+        const data: any = response.data;
+        userDto = {
+            token: accessToken,
+            name: data.login,
+            email: data.email,
+            payload: JSON.stringify(data)
+        }
+
+        // store user or update information (currently by token create new user)
         if (response.status == 200) {
-            const data = response.data;
-            this.userRepository.createOrUpdate({
-                token: accessToken,
-                name: data.login,
-                email: data.email,
-                payload: JSON.stringify(data)
-            })
+            this.userRepository.createOrUpdate(userDto)
         }
 
         // authentication data
-        const data: AuthResponse = {
-            'token': accessToken,
-            'user': response.data
+        const authResponse: AuthResponse = {
+            token: accessToken,
+            user: userDto
         };
 
-        return res.json(data);
+        return res.json(authResponse);
     }
 }
