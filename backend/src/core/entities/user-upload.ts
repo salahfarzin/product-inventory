@@ -2,7 +2,6 @@ import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn} fro
 import {User} from "./user";
 
 @Entity()
-/*@Unique(["email"])*/
 export class UserUpload {
 
     @PrimaryGeneratedColumn({type: "bigint"})

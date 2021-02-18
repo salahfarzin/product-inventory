@@ -1,11 +1,11 @@
 export const TYPES = {
-    // Database
+    // HttpClient
     HttpClient: Symbol.for("HttpClient"),
 
-    // Transformer
+    // Transformers (Data Mapper)
     Transformer: Symbol.for("Transformer"),
 
-    // Event
+    // Events
     EventEmitter: Symbol.for("EventEmitter"),
 
     // User

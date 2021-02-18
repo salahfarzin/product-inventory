@@ -22,7 +22,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "640e12c9120c72f8445e";
+/******/ 	var hotCurrentHash = "e854011e19975fade797";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -883,7 +883,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexport
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.dbConfig = void 0;\nvar entities_1 = __webpack_require__(/*! ../core/entities */ \"./src/core/entities/index.ts\");\nvar user_upload_1 = __webpack_require__(/*! ../core/entities/user-upload */ \"./src/core/entities/user-upload.ts\");\nexports.dbConfig = {\n    \"name\": \"default\",\n    \"type\": \"mysql\",\n    \"port\": 3306,\n    \"host\": process.env.DB_HOST,\n    \"username\": process.env.DB_USERNAME,\n    \"password\": process.env.DB_PASSWORD,\n    \"database\": process.env.DB_DATABASE,\n    \"synchronize\": true,\n    \"entities\": [\n        entities_1.Product,\n        entities_1.ProductImage,\n        entities_1.ProductInventory,\n        entities_1.User,\n        user_upload_1.UserUpload\n    ]\n};\n\n\n//# sourceURL=webpack:///./src/config/db.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.dbConfig = void 0;\nvar entities_1 = __webpack_require__(/*! ../core/entities */ \"./src/core/entities/index.ts\");\nvar user_upload_1 = __webpack_require__(/*! ../core/entities/user-upload */ \"./src/core/entities/user-upload.ts\");\nexports.dbConfig = {\n    \"name\": \"default\",\n    \"type\": \"mysql\",\n    \"port\": process.env.DB_PORT,\n    \"host\": process.env.DB_HOST,\n    \"username\": process.env.DB_USERNAME,\n    \"password\": process.env.DB_PASSWORD,\n    \"database\": process.env.DB_DATABASE,\n    \"synchronize\": true,\n    \"entities\": [\n        entities_1.Product,\n        entities_1.ProductImage,\n        entities_1.ProductInventory,\n        entities_1.User,\n        user_upload_1.UserUpload\n    ]\n};\n\n\n//# sourceURL=webpack:///./src/config/db.ts?");
 
 /***/ }),
 

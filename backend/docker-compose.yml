@@ -11,4 +11,4 @@ services:
       MYSQL_USER: product_user
       MYSQL_PASSWORD: secret
     ports:
-      - 3306:3306
+      - 4306:3306
