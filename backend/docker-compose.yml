@@ -1,14 +1,27 @@
 version: '3.3'
 
 services:
+#  node:
+#    container_name: pi-node
+#    build: ./
+#    volumes:
+#        - ./:/src
+#    env_file:
+#      - ./.env
+#    ports:
+#      - "${PORT}:${PORT}"
+#    depends_on:
+#      - db
   db:
     image: mysql:8
     restart: always
+    container_name: pi-mysql
+    env_file:
+      - ./.env
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: 42s8DkMVn.LskdEm2t(d
-      MYSQL_DATABASE: product_db
-      MYSQL_USER: product_user
-      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
     ports:
-      - 4306:3306
+      - ${DB_PORT}:3306

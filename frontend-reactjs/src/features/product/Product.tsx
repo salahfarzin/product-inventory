@@ -47,7 +47,7 @@ function Product() {
         if (!productList) {
             setLoading(true);
             http.get('/product/history')
-                .then(res => res && res.data && dispatch(setProductList(res.data.files)))
+                .then((res: any) => res && res.data && dispatch(setProductList(res.data.files)))
                 .catch()
                 .finally(() => setLoading(false));
         }
@@ -61,7 +61,7 @@ function Product() {
 
         setLoading(true);
         http.put('/product/upload', formData)
-            .then(res => {
+            .then((res: any) => {
                 if (res && res.data) {
                     dispatch(setProductList(res.data.files));
                     showAlert("files uploaded successfully", 'success');

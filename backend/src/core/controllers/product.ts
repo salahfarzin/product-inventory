@@ -1,9 +1,9 @@
-import {controller, httpGet, httpPost, httpPut, interfaces, request, response} from "inversify-express-utils";
+import {controller, httpGet, httpPut, interfaces, request, response} from "inversify-express-utils";
 import {ProductRepository} from "../repositories/product";
 import {TYPES} from "../../config/types";
 import * as express from "express";
 import {inject} from "inversify";
-import {uploadFiles} from "../../utils/uploadFile";
+import {uploadFiles} from "../../utils/upload-file";
 import {ImportCsv, ImportXml} from "../../import/import";
 import {ProductDto, ProductImageDto, ProductInventoryDto} from "../repositories/dtos";
 import {UserUploadDto} from "../repositories/dtos/user-upload";
